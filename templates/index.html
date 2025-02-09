@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>英语单词测试</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>第 {{ question_number }} 题</h1>
+    <p><strong>{{ question.english }}</strong> 的中文意思是？</p>
+
+    <form action="{{ url_for('next_question') }}" method="post">
+        {% for option in question.options %}
+            <input type="radio" name="answer" value="{{ option }}" required> {{ option }}<br>
+        {% endfor %}
+        <button type="submit">下一题</button>
+    </form>
+</body>
+</html>
